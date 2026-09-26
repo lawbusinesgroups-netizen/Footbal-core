@@ -41,6 +41,7 @@ MIN_RELIABLE_MATCHES = int(os.getenv("MIN_RELIABLE_MATCHES", "3"))
 CURRENT_SEASON = int(os.getenv("SEASON", "2025"))
 
 LEAGUES = {
+    # --- Европа: топ-дивизионы (без вторых лиг, без женских) ---
     39: "Premier League (England)",
     140: "La Liga (Spain)",
     135: "Serie A (Italy)",
@@ -50,10 +51,44 @@ LEAGUES = {
     94: "Primeira Liga (Portugal)",
     203: "Süper Lig (Turkey)",
     235: "Premier League (Russia)",
+    144: "Jupiler Pro League (Belgium)",
+    179: "Premiership (Scotland)",
+    106: "Ekstraklasa (Poland)",
+    113: "Allsvenskan (Sweden)",
+    103: "Eliteserien (Norway)",
+    119: "Superliga (Denmark)",
+    218: "Bundesliga (Austria)",
+    207: "Super League (Switzerland)",
+    197: "Super League 1 (Greece)",
+    333: "Premier League (Ukraine)",
+    71: "Serie A (Brazil)",
+    253: "MLS (USA)",
+    262: "Liga MX (Mexico)",
+    98: "J1 League (Japan)",
+
+    # --- Континентальные и международные турниры ---
     2: "UEFA Champions League",
     3: "UEFA Europa League",
     848: "UEFA Europa Conference League",
+    5: "UEFA Nations League",
+    1: "World Cup",
+    4: "Euro Championship",
+    9: "Copa America",
+    13: "CONMEBOL Libertadores",
+    11: "CONMEBOL Sudamericana",
+    6: "Africa Cup of Nations",
 }
+
+# ВАЖНО: этот список — базовый набор, в котором я уверен на 100%. Полного
+# каталога лиг всех стран мира у меня нет возможности сверить "вживую" с
+# API-Football, поэтому кто-то из менее популярных топ-дивизионов (Аргентина,
+# Чили, Южная Корея, Саудовская Аравия, Хорватия, Сербия, Чехия и т.д.) в
+# списке пока нет — рискованно вписывать ID наугад, можно случайно подставить
+# не ту лигу. Чтобы дополнить список безопасно:
+#   1. Возьми свой API_FOOTBALL_KEY
+#   2. Запусти bot/tools/list_leagues.py (см. рядом) — он выгрузит ПОЛНЫЙ
+#      официальный список лиг (без Cup, без Women) с их реальными ID
+#   3. Из полученного списка добавь сюда нужные топ-дивизионы вручную
 
 DEFAULT_LANGUAGE = "ru"
 SUPPORTED_LANGUAGES = ("ru", "en")
